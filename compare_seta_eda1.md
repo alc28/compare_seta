@@ -19,7 +19,7 @@ output:
 ## Staffing by day of week, Apr - Jun 2018
 
 
-![](compare_seta_eda1_files/figure-html/staffing by day facets-1.png)<!-- -->
+![](compare_seta_eda1_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 
 
@@ -45,29 +45,29 @@ webshot("https://www.medicare.gov/NursingHomeCompare/compare.html#cmprTab=0&cmpr
         delay = 1.0)
 ```
 
-![](compare_seta_eda1_files/figure-html/nursing home compare-1.png)<!-- -->
+![](compare_seta_eda1_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ## Beechtree Center for Rehabilitation and Nursing - ownership
 
 Some of the information is inaccurate. The people listed as a managing employees no longer work at Beechtree.  
 
-![](compare_seta_eda1_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](compare_seta_eda1_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 
 ## Cayuga Ridge Extended Care - ownership
 
 Why is ownership information unavailable for Cayuga Ridge?
 
-![](compare_seta_eda1_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](compare_seta_eda1_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 Kendall at Ithaca - ownership
 
-![](compare_seta_eda1_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](compare_seta_eda1_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 
 Oak Hill Manor Nursing Home - ownership
 
-![](compare_seta_eda1_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](compare_seta_eda1_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 
 
