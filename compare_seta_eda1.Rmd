@@ -1,0 +1,132 @@
+---
+title: 'Long Term Care Facilities Comparison: Beechtree, Cayuga Ridge, Kendall, Oak
+  Hill; Ithaca, NY'
+output:
+  html_document: 
+    keep_md: yes
+  html_notebook: default
+---
+
+
+```{r setup, include=FALSE, warning=FALSE, echo=TRUE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load lbraries, message=FALSE, warning=FALSE, echo=FALSE}
+# load libraries
+
+library(tidyverse)
+library(lubridate)
+library(stringr)
+library(webshot)
+
+```
+
+
+```{r load data, echo=FALSE, message=FALSE, warning=FALSE}
+
+df_newyork <- read_rds("data/newyork_2018.rds")
+
+df_ithaca <- df_newyork %>%
+  filter(workdate >"2018-03-31",
+         workdate < "2018-07-01") %>%
+  filter(str_detect(provname, "BEECHTREE|CAYUGA RIDGE|KENDAL AT ITHACA|OAK HILL"))
+
+
+```
+
+
+## Staffing by day of week, Apr - Jun 2018
+
+
+```{r staffing by day facets, echo=FALSE, fig.height=5, fig.width=11, warning=FALSE}
+
+
+
+ggplot(data = df_ithaca) +
+  geom_path(mapping = aes(x = workdate, y = residents_per_cna, col = str_trunc(provname, 10) ), size = 0.3 ) +
+  geom_point(mapping = aes(x = workdate, y = residents_per_cna, col = str_trunc(provname, 10)), size = 1.5) +
+  labs(x = "",
+       y = "Residents per CNA",
+       title = "Staffing at Long Term Care Facilities, Ithaca NY",
+       subtitle = "Residents per CNA by day, April - June 2018" ) +
+  theme(legend.title = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  facet_grid(.~day) +
+  scale_y_continuous(limits = c(7, 19), breaks = seq(8,18, by = 2))
+
+ggsave(filename = "output/ithaca_cna_staffing_pbj_2018_apr-jun.png",
+       width=11,
+       height=7,
+       dpi = 600)
+
+```
+
+
+
+# Nursing Home Compare
+
+https://www.medicare.gov/NursingHomeCompare/
+
+
+The Medicare.Gov website contains profiles of facilities. (The comparison tool permits only 3 at a time.)
+
+
+```{r nursing home compare, echo=FALSE, warning=FALSE, cache=TRUE}
+
+webshot("https://www.medicare.gov/NursingHomeCompare/compare.html#cmprTab=0&cmprID=335017%2C335249%2C335793&cmprDist=1.5%2C2.4%2C4.3&lat=42.435511&lng=-76.5257007&loc=14850",
+        "data/compare_seta_1.png",
+        delay = 1.0)
+
+```
+
+## Beechtree Center for Rehabilitation and Nursing - ownership
+
+Some of the information is inaccurate. The people listed as a managing employees no longer work at Beechtree.  
+
+```{r, cache=TRUE, echo=FALSE, warning=FALSE}
+
+webshot("https://www.medicare.gov/nursinghomecompare/ownership-info.html?ID=335017",
+        "data/ownership_beechtree.png",
+        delay = 1.0)
+```
+
+
+## Cayuga Ridge Extended Care - ownership
+
+Why is ownership information unavailable for Cayuga Ridge?
+
+```{r, cache=TRUE, echo=FALSE, warning=FALSE}
+
+webshot("https://www.medicare.gov/nursinghomecompare/ownership-info.html?ID=335249",
+        "data/ownership_cayugaridge.png",
+        delay = 1.0)
+
+```
+
+Kendall at Ithaca - ownership
+
+```{r, cache=TRUE, echo=FALSE, warning=FALSE}
+
+webshot("https://www.medicare.gov/nursinghomecompare/ownership-info.html?ID=335793",
+        "data/ownership_kendall.png",
+        delay = 1.0)
+
+```
+
+
+Oak Hill Manor Nursing Home - ownership
+
+```{r, cache=TRUE, echo=FALSE, warning=FALSE}
+
+
+webshot("https://www.medicare.gov/nursinghomecompare/ownership-info.html?ID=335225",
+        "data/ownership_oakhill.png",
+        delay = 1.0)
+
+```
+
+
+
