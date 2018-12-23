@@ -39,8 +39,7 @@ df_ithaca <- df_newyork %>%
 ## Staffing by day of week, Apr - Jun 2018
 
 
-```{r staffing by day facets, echo=FALSE, fig.height=5, fig.width=11, warning=FALSE}
-
+```{r staffing by day facets, echo=FALSE, fig.height=5, fig.width=11, warning=FALSE }
 
 
 ggplot(data = df_ithaca) +
@@ -57,7 +56,7 @@ ggplot(data = df_ithaca) +
   facet_grid(.~day) +
   scale_y_continuous(limits = c(7, 19), breaks = seq(8,18, by = 2))
 
-ggsave(filename = "output/ithaca_cna_staffing_pbj_2018_apr-jun.png",
+ggsave(filename = "output/ithaca_cna_staffing_pbj_2018_apr-jun_rmd.png",
        width=11,
        height=7,
        dpi = 600)
