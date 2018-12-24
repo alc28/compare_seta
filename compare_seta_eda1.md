@@ -23,12 +23,6 @@ output:
 
 
 
-```r
-ggsave(filename = "output/ithaca_cna_staffing_pbj_2018_apr-jun_rmd.png",
-       width=11,
-       height=7,
-       dpi = 600)
-```
 
 ## Nursing Home Compare
 
@@ -37,13 +31,6 @@ https://www.medicare.gov/NursingHomeCompare/
 
 The Medicare.Gov website contains profiles of facilities. (The comparison tool permits only 3 at a time.)
 
-
-
-```r
-webshot("https://www.medicare.gov/NursingHomeCompare/compare.html#cmprTab=0&cmprID=335017%2C335249%2C335793&cmprDist=1.5%2C2.4%2C4.3&lat=42.435511&lng=-76.5257007&loc=14850",
-        "data/compare_seta_1.png",
-        delay = 1.0)
-```
 
 ![](compare_seta_eda1_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
